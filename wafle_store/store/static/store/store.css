@@ -2,3 +2,10 @@ nav.site-header {
     background-color: rgba(0, 0, 0, .85);
     backdrop-filter: saturate(180%) blur(20px);
 }
+
+nav dl,
+ol,
+ul {
+    margin-top: 16px;
+    margin-bottom: 1rem;
+}

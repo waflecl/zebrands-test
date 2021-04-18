@@ -1,25 +1,23 @@
 {% extends 'base.html' %}
-    
     {% block content %}
       <section class="jumbotron text-center">
         <div class="container">
-          <h1>Album example</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
+          <h1>Awesome Store</h1>
+          <p class="lead text-muted">You can review the product you want</p>
         </div>
       </section>
-
     <div class="album py-5 bg-light">
     <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <h2>Products</h2>
+          </div>
+        </div>
         <div class="row">
           {% for product in products %}
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-              <img src="/uploads/{{ product.image}}" width="348" height="225" class="img-fluid">
-
+              <img src="/media/{{ product.image}}" width="348" height="225" class="img-fluid">
               <div class="card-body">
                 <p class="card-text">{{ product.name }}</p>
                 <div class="d-flex justify-content-between align-items-center">

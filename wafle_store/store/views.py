@@ -1,9 +1,9 @@
 from django.http import Http404
 from django.shortcuts import render
+from django.views.defaults import page_not_found
 from store.models import Category, Product
 
 def commonContext( dict_params=None):
-
   context = {}
   categories = Category.objects.all()
   context.update({'categories' : categories})
@@ -14,7 +14,7 @@ def commonContext( dict_params=None):
 def index(request):
   products = Product.objects.all()
   dictionary = {'products':products}
-  return render(request, 'index.html', dictionary)
+  return render(request, 'index.html', commonContext(dictionary))
 
 def product(request, slug):
   try:
@@ -30,7 +30,11 @@ def category(request, slug):
     products = Product.objects.filter(categories=category)
     dictionary = {'category':category, 'products':products}
   except Category.DoesNotExist:
-    raise Http404("Category doesn't exist")
-  
+    raise Http404("Category doesn't exist")  
   return render(request, 'category.html', commonContext(dictionary))
+
+def handler404(request, *args, **argv):
+    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
 
