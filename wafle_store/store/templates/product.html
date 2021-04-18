@@ -17,10 +17,19 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <div class="card text-center">
-            <div class="card-body">
-              <img src="/media/{{ product.image }}" width="348" height="225" class="img-fluid" />
-              <h5 class="card-title">{{ product.name }}</h5>
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-9">
+                  <h5 class="card-title">{{ product.name }} <span class="badge badge-secondary"></span></h5>
+                </div>
+                <div class="col-3">
+                  <span class="badge badge-secondary"> Visited : {{ count_visited }}</span>
+                </div>                
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <img src="/media/{{ product.image }}" width="348" height="225" class="img-fluid" />              
             </div>
           </div>
         </div>        
