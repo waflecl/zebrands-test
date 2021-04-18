@@ -30,7 +30,7 @@ class Product(models.Model):
   sku = models.CharField(max_length=255, blank=False, null=False)
   brand = models.CharField(max_length=255, blank=False, null=False)
   price = models.CharField(max_length=255,blank=False, null=False)
-  image = models.ImageField(upload_to ='uploads/% Y/% m/% d/')
+  image = models.ImageField(upload_to ='uploads/')
   description = models.TextField(blank=True, null=True)
   slug = models.SlugField(max_length=255, blank=True, null=True)
   categories = models.ManyToManyField(Category)
