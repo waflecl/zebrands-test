@@ -348,6 +348,7 @@ FakesAssemblies/
 #STATIC FILEs
 staticfiles/
 staticfiles/*
+static/*
 
 #Clean uploads folder
 uploads/
