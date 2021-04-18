@@ -38,13 +38,6 @@ copy generated key and paste in your settings.py SECRET_KEY using ''
 $ cd wafle_store
 $ pip install -r requirements.txt
 ```
-
-# Generate Key for your project
-In terminal execute this command :
-```bash
-$ python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-
 # Finally
 In your project folder wafle_store executing this command :
 ```bash
