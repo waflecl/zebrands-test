@@ -1,6 +1,9 @@
 ## zebrands-test
 This is a repository of the Zėbrands test
 
+<img width="1348" alt="Captura de Pantalla 2021-04-18 a la(s) 16 04 33" src="https://user-images.githubusercontent.com/4990109/115159183-e046b680-a05f-11eb-8cb3-eeed3a51cca4.png">
+
+
 ## REQUIREMENTS
 
 - Python Version 3.9
@@ -35,13 +38,6 @@ copy generated key and paste in your settings.py SECRET_KEY using ''
 $ cd wafle_store
 $ pip install -r requirements.txt
 ```
-
-# Generate Key for your project
-In terminal execute this command :
-```bash
-$ python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-
 # Finally
 In your project folder wafle_store executing this command :
 ```bash
