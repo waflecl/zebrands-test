@@ -345,6 +345,10 @@ FakesAssemblies/
 # Local History for Visual Studio Code
 .history/
 
+#STATIC FILEs
+staticfiles/
+staticfiles/*
+
 #Clean uploads folder
 uploads/
-updloads/*
+uploads/*
