@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-from store.views import handler404
 
 urlpatterns = [
     path(r'', include('store.urls')),
@@ -26,7 +25,5 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
 
-handler404 = 'store.views.handler404'
+handler404 = 'store.views.error_404'

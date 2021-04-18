@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG_VALUE') == 'TRUE'
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'store_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,9 +128,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = env('STATIC_URL')
+STATIC_URL = env('BASE_URL')+env('STATIC_URL')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), ) 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = env('MEDIA_URL')
+MEDIA_URL = env('BASE_URL')+env('MEDIA_URL')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE') == 'TRUE'
+SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE') == 'TRUE'

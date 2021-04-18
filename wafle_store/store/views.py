@@ -36,8 +36,8 @@ def category(request, slug):
     raise Http404("Category doesn't exist")  
   return render(request, 'category.html', commonContext(dictionary))
 
-def handler404(request, *args, **argv):
-    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
-    response.status_code = 404
-    return response
+def error_404(request, exception):
+  return render(request,'404.html', commonContext())
 
+def error_500(request,  exception):
+  return render(request,'500.html', {})  
