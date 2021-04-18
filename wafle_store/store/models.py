@@ -1,3 +1,4 @@
+from django.template.defaultfilters import slugify
 from django.db import models
 from django.contrib.auth.models import User
 from store.models import models
@@ -7,10 +8,15 @@ from store.enums import OrderStatus
 class Category(models.Model):
   name = models.CharField(max_length=255, blank=False, null=False)
   description = models.CharField(max_length=255)
+  slug = models.SlugField(max_length=255, blank=True, null=True)
   subcategory = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   deleted_at = models.DateTimeField
+
+  def save(self, *args, **kwargs):
+    self.slug = slugify(self.name)
+    super(Category, self).save(*args, **kwargs)
   class Meta:
       ordering = ['name']
       verbose_name = 'Category'
@@ -26,10 +32,15 @@ class Product(models.Model):
   price = models.CharField(max_length=255,blank=False, null=False)
   image = models.ImageField(upload_to ='uploads/% Y/% m/% d/')
   description = models.TextField(blank=True, null=True)
+  slug = models.SlugField(max_length=255, blank=True, null=True)
   categories = models.ManyToManyField(Category)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   deleted_at = models.DateTimeField
+
+  def save(self, *args, **kwargs):
+    self.slug = slugify(self.name)
+    super(Product, self).save(*args, **kwargs)
   class Meta:
         ordering = ['name']
 
