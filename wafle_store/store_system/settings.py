@@ -128,11 +128,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = env('BASE_URL')+env('STATIC_URL')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), ) 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = env('STATIC_URL')
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 MEDIA_URL = env('BASE_URL')+env('MEDIA_URL')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE') == 'TRUE'
 SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE') == 'TRUE'
+
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
