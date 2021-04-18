@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block header_section %}
+      <div class="container">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page">Home</li>
+                <li class="breadcrumb-item" aria-current="page">Product</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+              </ol>
+            </nav>
+        </div>
+      </div>
+{% endblock header_section %}
+{% block content %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-9">
+                  <h5 class="card-title">{{ product.name }} <span class="badge badge-secondary"></span></h5>
+                </div>
+                <div class="col-3">
+                  <span class="badge badge-secondary"> Visited : {{ count_visited }}</span>
+                </div>                
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <img src="/media/{{ product.image }}" width="348" height="225" class="img-fluid" />              
+            </div>
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+      <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Description</h5>
+              <div class="card-text">
+              {{product.description | safe }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

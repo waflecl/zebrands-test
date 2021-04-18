@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+    {% block content %}
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1>Awesome Store</h1>
+          <p class="lead text-muted">You can review the product you want</p>
+        </div>
+      </section>
+    <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <h2>Products</h2>
+          </div>
+        </div>
+        <div class="row">
+          {% for product in products %}
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="/media/{{ product.image}}" width="348" height="225" class="img-fluid">
+              <div class="card-body">
+                <p class="card-text">{{ product.name }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="/product/{{product.slug}}" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}          
+      </div>
+    </div>
+  {% endblock %}
