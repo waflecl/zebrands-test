@@ -5,9 +5,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                {% for category in product.categories %}
-                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
-                {% endfor %}                
+           
               </ol>
             </nav>
         </div>
@@ -21,7 +19,7 @@
         {% for product in products %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="{{ product.image}}" width="348" height="225" class="img-fluid">
+            <img src="/uploads/{{ product.image}}" width="348" height="225" class="img-fluid">
 
             <div class="card-body">
               <p class="card-text">{{ product.name }}</p>
