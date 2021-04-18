@@ -18,8 +18,8 @@ $ source venv/bin/activate
 Tip URL About of [virtual env](https://sourabhbajaj.com/mac-setup/Python/virtualenv.html)
 # Use .env-example
 ```bash
-cd store_system
-cp .env-example .env
+$ cd store_system
+$ cp .env-example .env
 ```
 Replace with your values
 
@@ -32,32 +32,32 @@ copy generated key and paste in your settings.py SECRET_KEY using ''
 
 # Install requirements on folder of project
 ```bash
-cd wafle_store
-pip install -r requirements.txt
+$ cd wafle_store
+$ pip install -r requirements.txt
 ```
 
 # Generate Key for your project
 In terminal execute this command :
 ```bash
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+$ python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 
 # Finally
 In your project folder wafle_store executing this command :
 ```bash
-python manage.py runserver
+$ python manage.py runserver
 ```
 ## ADITIONALS COMMENTS
 # Create user admin
 ```bash
-python manage.py createsuperuser
+$ python manage.py createsuperuser
 ```
 And follow the instructions
 
 Visit admin page http://{REPLACE_WITH_YOUR_HOST}/admin
 # Create tables
 ```bash
-python manage.py migrate
+$ python manage.py migrate
 ```
 Or your can use the backup of database and media files:
 [files_media_sql.zip](https://github.com/waflecl/zebrands-test/files/6331715/files_media_sql.zip)
