@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from store.models import Category, Product
 
@@ -18,9 +19,23 @@ def commonContext( dictParams=None):
 def index(request):
   products = Product.objects.all()
   context = None
-  if products : 
+  if products != None: 
     context = commonContext(products)
   else:
     context = commonContext()
   return render(request, 'index.html', context)
+
+def product(request, slug):
+  try:
+    product = Product.objects.filter(slug=slug)
+  except Product.DoesNotExist:
+    raise Http404("Product doesn't exist")
+  return render(request, 'product.html', commonContext(product))
+
+def category(request, slug):
+  try:
+    category = Category.objects.filter(slug=slug)
+  except Category.DoesNotExist:
+    raise Http404("Category doesn't exist")
+  return render(request, 'category.html', commonContext(category))
 
