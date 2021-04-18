@@ -16,8 +16,12 @@ $ virtualenv venv
 $ source venv/bin/activate
 ```
 Tip URL About of [virtual env](https://sourabhbajaj.com/mac-setup/Python/virtualenv.html)
-# Use settings.py
-copy settings-example.py and rename settings.py for your project
+# Use .env-example
+```bash
+cd store_system
+cp .env-example .env
+```
+Replace with your values
 
 # Generate Key for your project
 In terminal execute this command :
