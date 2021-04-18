@@ -5,7 +5,9 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
+                {% for category in product.categories %}
                 <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+                {% endfor %}                
               </ol>
             </nav>
         </div>
