@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from store.models import models
 from store.enums import OrderStatus
-
+from store.utils import send_mail_admins
 
 class Category(models.Model):
   name = models.CharField(max_length=255, blank=False, null=False)
@@ -38,8 +38,16 @@ class Product(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
   deleted_at = models.DateTimeField
 
+  __original_price = None
+
+  def __init__(self, *args, **kwargs):
+    super(Product, self).__init__(*args, **kwargs)
+    self.__original_price = self.price
+
   def save(self, *args, **kwargs):
     self.slug = slugify(self.name)
+    if self.price != self.__original_price:
+      send_mail_admins('Change price','The product '+self.name+' ('+self.sku+') has been change price to '+self.price)
     super(Product, self).save(*args, **kwargs)
   class Meta:
         ordering = ['name']
