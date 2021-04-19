@@ -20,7 +20,7 @@ def index(request):
 def product(request, slug):
   try:
     product = Product.objects.get(slug=slug)
-    if not request.session.keys() :
+    if not request.session['session_key'] :
         request.session['session_key'] = get_random_string(length=32)
     countVisited = ProductVisited.objects.filter(product=product,session=request.session['session_key']).count()    
     if countVisited == 0 :      
