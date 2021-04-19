@@ -62,4 +62,10 @@ This zip contains 2 files, media and SQL Dump, copy media inside project wafle_s
 # Model v1
 ![model_wafle_store_v1](https://user-images.githubusercontent.com/4990109/115153020-c302ef80-a041-11eb-83bd-353088e4d099.png)
 
+## For docker use
+You can execute docker container with:
+```bash
+$ docker-compose up
+```
 
+And if youn wish, restore dump with dumps/wafle_store_data.sql using mysqldump
