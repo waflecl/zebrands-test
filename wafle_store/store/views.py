@@ -20,9 +20,9 @@ def index(request):
 def product(request, slug):
   try:
     product = Product.objects.get(slug=slug)
-    if not request.session['session_key'] :
+    if 'session_key' not in request.session :
         request.session['session_key'] = get_random_string(length=32)
-    countVisited = ProductVisited.objects.filter(product=product,session=request.session['session_key']).count()    
+    countVisited = ProductVisited.objects.filter(product=product,session=request.session['session_key']).count()        
     if countVisited == 0 :      
       ProductVisited.objects.create(product=product,session=request.session['session_key'])
     dictionary = {'product':product, 'count_visited':countVisited}
