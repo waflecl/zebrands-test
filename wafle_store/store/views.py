@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.defaults import page_not_found
+from django.utils.crypto import get_random_string
 from store.models import Category, Product, ProductVisited
 
 def commonContext( dict_params=None):
@@ -19,9 +20,11 @@ def index(request):
 def product(request, slug):
   try:
     product = Product.objects.get(slug=slug)
-    countVisited = ProductVisited.objects.filter(product=product,session=request.session.session_key).count()
-    if countVisited == 0 :
-      ProductVisited.objects.create(product=product,session=request.session.session_key)
+    if not request.session.keys() :
+        request.session['session_key'] = get_random_string(length=32)
+    countVisited = ProductVisited.objects.filter(product=product,session=request.session['session_key']).count()    
+    if countVisited == 0 :      
+      ProductVisited.objects.create(product=product,session=request.session['session_key'])
     dictionary = {'product':product, 'count_visited':countVisited}
   except Product.DoesNotExist:
     raise Http404("Product doesn't exist")
