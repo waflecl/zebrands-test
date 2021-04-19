@@ -22,6 +22,8 @@
             <img src="/media/{{ product.image}}" width="348" height="225" class="img-fluid">
             <div class="card-body">
               <p class="card-text">{{ product.name }}</p>
+              {% load humanize %}
+              <p class="card-text text-center">$ {{ product.price | intcomma }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="/product/{{product.slug}}" class="btn btn-sm btn-outline-secondary">View</a>

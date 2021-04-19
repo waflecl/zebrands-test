@@ -29,7 +29,9 @@
               </div>
             </div>
             <div class="card-body text-center">
-              <img src="/media/{{ product.image }}" width="348" height="225" class="img-fluid" />              
+              <img src="/media/{{ product.image }}" width="348" height="225" class="img-fluid" />
+              {% load humanize %}
+              <h3>$ {{ product.price | intcomma }}</h3>
             </div>
           </div>
         </div>        
