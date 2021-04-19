@@ -133,7 +133,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-MEDIA_URL = os.getenv('BASE_URL')+os.getenv('MEDIA_URL')
+MEDIA_URL = os.getenv('MEDIA_URL')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE') == 'TRUE'
